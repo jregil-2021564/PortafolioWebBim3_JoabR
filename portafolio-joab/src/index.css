@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS — "Credencial" (negro + dorado)
+   Inspirado en un carnet/insignia metalica: fondo casi negro,
+   tinta dorada como unico acento, tipografia condensada tipo
+   sello/placa para los titulos.
+   ============================================================ */
+@theme {
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-bg: #0a0a0b;
+  --color-bg-soft: #0d0d0e;
+  --color-surface: #141416;
+  --color-surface-2: #1c1c1f;
+  --color-border: #28282c;
+  --color-border-soft: #1c1c1f;
+
+  --color-text: #ededef;
+  --color-text-muted: #8b8b92;
+  --color-text-dim: #57575d;
+
+  --color-accent: #ededef;
+  --color-accent-soft: #ededef14;
+  --color-accent-2: #c7c7cc;
+  --color-bronze: #4a4a4f;
+  --color-storm: #b5453a;
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+@keyframes marqueeLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marqueeRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+/* Fondo de cuadricula tipo "blueprint" usado en toda la app */
+.grid-bg {
+  background-image:
+    linear-gradient(to right, var(--color-border-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-border-soft) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, var(--color-accent-2), var(--color-accent) 55%, var(--color-bronze));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-shimmer {
+  background: linear-gradient(
+    100deg,
+    var(--color-text-dim) 30%,
+    var(--color-accent-2) 45%,
+    var(--color-accent) 50%,
+    var(--color-text-dim) 65%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 4.5s linear infinite;
+}
+
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
+
+.glass-panel {
+  background: color-mix(in srgb, var(--color-surface) 82%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border);
+}
+
+/* Variante liviana sin backdrop-filter, para tarjetas con muchas imagenes
+   (certificados, proyectos) donde el blur de fondo cuesta mucho render. */
+.panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.img-fade {
+  transition: opacity 0.35s ease;
+}
+.img-fade[data-loaded="false"] {
+  opacity: 0;
+}
+.img-fade[data-loaded="true"] {
+  opacity: 1;
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 32s linear infinite;
+}
+.marquee-track-reverse {
+  animation-name: marqueeRight;
+  animation-duration: 38s;
+}
+.marquee-row:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.lazy-card {
+  content-visibility: auto;
+  contain-intrinsic-size: 320px 240px;
+}
