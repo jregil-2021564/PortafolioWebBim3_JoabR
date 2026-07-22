@@ -6,6 +6,7 @@ import Footer from '../shared/components/Footer'
 import HomePage from './HomePage'
 import ProjectDetailPage from '../features/portfolio/pages/ProjectDetailPage'
 import IntroScreen from '../features/intro/IntroScreen'
+import MusicPlayer from '../shared/components/MusicPlayer'
 
 function PageTransition({ children }) {
   return (
@@ -56,6 +57,7 @@ export default function App() {
             </Routes>
           </AnimatePresence>
           <Footer />
+          <MusicPlayer />
         </>
       )}
     </div>

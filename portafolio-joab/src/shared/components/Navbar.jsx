@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import ThemeToggle from './ThemeToggle'
 
 const LINKS = [
   { id: 'home', label: 'Inicio' },
@@ -118,13 +119,16 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <button
-          onClick={() => setOpen((o) => !o)}
-          className="md:hidden p-2 text-(--color-text)"
-          aria-label="Abrir menú"
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-3">
+  <ThemeToggle />
+  <button
+    onClick={() => setOpen((o) => !o)}
+    className="md:hidden p-2 text-(--color-text)"
+    aria-label="Abrir menú"
+  >
+    {open ? <X size={20} /> : <Menu size={20} />}
+  </button>
+</div>
       </div>
 
       <AnimatePresence>

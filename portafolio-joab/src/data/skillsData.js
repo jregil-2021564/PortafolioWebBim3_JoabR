@@ -7,13 +7,29 @@ export const LANGUAGES = [
   { name: 'SQL', level: 90 },
   { name: 'C++ / C', level: 85 },
   { name: 'Python', level: 50 },
+  { name: 'TypeScript', level: 85 },
+  { name: 'C#', level: 75 },
+  { name: 'PHP', level: 70 },
+  { name: 'Kotlin', level: 65 },
+  { name: 'Swift', level: 60 },
+  { name: 'Go', level: 55 },
 ]
 
 // Frameworks, librerías y bases de datos
 export const FRAMEWORKS = [
-  { name: 'React / React Native', level: 85 },
-  { name: 'Node.js / Express', level: 90 },
-  { name: 'MongoDB / MySQL / PostgreSQL', level: 95 },
+  { name: 'React', level: 85 },
+  { name: 'React Native', level: 85 },
+  { name: 'Node.js', level: 90 },
+  { name: 'Express', level: 90 },
+  { name: 'MongoDB', level: 95 },
+  { name: 'MySQL', level: 95 },
+  { name: 'PostgreSQL', level: 95 },
+  { name: 'Angular', level: 75 },
+  { name: 'ASP.NET Core', level: 85 },
+  { name: 'Spring Boot', level: 70 },
+  { name: 'Next.js', level: 85 },
+  { name: 'NestJS', level: 80 },
+  { name: 'Tailwind CSS', level: 90 },
 ]
 
 // Herramientas (sin porcentaje, solo presencia)
@@ -23,6 +39,15 @@ export const TOOLS = [
   'pgAdmin',
   'GitHub',
   'VS Code',
+  'Git',
+  'Figma',
+  'Android Studio',
+  'MongoDB Compass',
+  'IntelliJ IDEA',
+  'NetBeans',
+  'Visual Studio',
+  'Expo',
+  'Insomnia',
 ]
 
 // Iconos reales via iconify-icon (logos:*) usados en TechStack (features/portfolio)
